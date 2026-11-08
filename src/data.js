@@ -295,7 +295,4 @@ export const skills = [
 
 export const timeline = [
   { kind: 'Formation', title: "Cycle ingénieur MSEI — ENSAM Casablanca", period: '', text: 'Management des Systèmes Électriques Intelligents.' },
-  { kind: 'Stage', title: 'Stage — à renseigner', period: '', text: '' },
-  { kind: 'Projet académique', title: 'Projet académique — à renseigner', period: '', text: '' },
-  { kind: 'Certification', title: 'Certification — à renseigner', period: '', text: '' },
 ]
