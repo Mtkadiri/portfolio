@@ -94,7 +94,7 @@ export const projects = [
     results: [],
     links: { github: '', demo: '' },
     images: [],
-  },,
+  },
 {
   "id": "serre-connectee",
   "title": "Serre connectée : supervision et régulation MQTT",
