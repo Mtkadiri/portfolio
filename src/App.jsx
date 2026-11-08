@@ -154,7 +154,23 @@ function ProjectPage({ p }) {
       <ul className="feat">{p.features.map((x) => <li key={x.label}><span className={`st ${x.status === '?' ? 'q' : x.status}`}>{STATUS[x.status]}</span>{x.label}</li>)}</ul>
       <h2>Résultats</h2>
       {p.results.length ? <ul className="bul">{p.results.map((r) => <li key={r}>{r}</li>)}</ul> : <p className="muted">Aucun résultat mesuré n'est publié pour l'instant.</p>}
-      {p.images.length > 0 && <div className="shots">{p.images.map((src) => <img key={src} src={src} alt={`Capture du projet ${p.title}`} loading="lazy" onError={(e) => (e.currentTarget.style.display = 'none')} />)}</div>}
+      {p.images.length > 0 && <><h2>Architecture du projet</h2><div className="shots">{p.images.map((src) => <img key={src} src={src} alt={`Schéma du projet ${p.title}`} loading="lazy" />)}</div></>}
+      {p.sources?.length > 0 && <>
+        <h2>Codes sources du projet</h2>
+        <p className="muted small">Fichiers issus du projet d'origine. Les identifiants réseau et clés éventuelles sont neutralisés pour une publication publique.</p>
+        <ul className="code-files">
+          {p.sources.map((file) => (
+            <li key={file.path}>
+              <span className="code-files-name">{file.label}</span>
+              <span className="muted small">{file.desc}</span>
+              <span className="code-files-links">
+                <a href={`https://github.com/Mtkadiri/portfolio/blob/main/public/${file.path}`} target="_blank" rel="noopener noreferrer">Voir sur GitHub</a>
+                <a href={`${import.meta.env.BASE_URL}${file.path}`} download={file.label}>Télécharger</a>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </>}
       <h2>Liens</h2>
       {L.length ? <ul className="social">{L.map(([l, u]) => <li key={l}><a href={u} target="_blank" rel="noopener noreferrer">{l}</a></li>)}</ul> : <p className="muted">Dépôt et démonstration : pas encore publiés.</p>}
     </main>
