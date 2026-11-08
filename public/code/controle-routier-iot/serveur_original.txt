@@ -1,0 +1,55 @@
+from flask import Flask
+import requests
+import time
+import os
+
+app = Flask(__name__)
+
+# ================= CONFIG =================
+PHONE_CAMERA_URL = httpYOUR_PHONE_IP8080shot.jpg
+OCR_API_URL = httpsmrcondoro.pythonanywhere.comextract_plate
+
+SAVE_DIR = photos
+os.makedirs(SAVE_DIR, exist_ok=True)
+# =========================================
+
+@app.route(trigger, methods=[GET])
+def trigger()
+    try
+        print(🚨 TRIGGER REÇU)
+
+        # 1️⃣ Capture image depuis téléphone
+        cam = requests.get(PHONE_CAMERA_URL, timeout=10)
+        if cam.status_code != 200
+            raise Exception(Camera inaccessible)
+
+        filename = f{SAVE_DIR}photo_{int(time.time())}.jpg
+        with open(filename, wb) as f
+            f.write(cam.content)
+
+        print(📸 Photo enregistrée , filename)
+
+        # 2️⃣ Envoi multipart vers OCR cloud
+        with open(filename, rb) as img
+            ocr = requests.post(OCR_API_URL, files={image img}, timeout=15)
+
+        if ocr.status_code != 200
+            raise Exception(OCR API error)
+
+        data = ocr.json()
+        ocr_text = data.get(ocr_raw_text, UNKNOWN)
+
+        print(🔎 OCR =, ocr_text)
+
+        # 3️⃣ RETOUR SIMPLE (TEXTE SEUL)
+        return ocr_text
+
+    except Exception as e
+        print(❌ ERREUR , e)
+        return ERROR, 500
+
+
+if __name__ == __main__
+    print(=== SERVEUR HTTP PRÊT ===)
+    print(URL  httpIP_PC5000trigger)
+    app.run(host=0.0.0.0, port=5000)
