@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { profile, projects, categories, skills, timeline } from './data.js'
+import { profile, projects, categories, skills, timeline, certifications } from './data.js'
 
-const NAV = [['apropos', 'À propos'], ['projets', 'Projets'], ['competences', 'Compétences'], ['parcours', 'Parcours'], ['contact', 'Contact']]
+const NAV = [['apropos', 'À propos'], ['projets', 'Projets'], ['competences', 'Compétences'], ['parcours', 'Parcours'], ['certifications', 'Certifications'], ['contact', 'Contact']]
 const STATUS = { ok: 'Implémenté', wip: 'En cours', todo: 'À développer', '?': 'À confirmer' }
 
 function useHash() {
@@ -154,6 +154,29 @@ function ProjectPage({ p }) {
       <ul className="feat">{p.features.map((x) => <li key={x.label}><span className={`st ${x.status === '?' ? 'q' : x.status}`}>{STATUS[x.status]}</span>{x.label}</li>)}</ul>
       <h2>Résultats</h2>
       {p.results.length ? <ul className="bul">{p.results.map((r) => <li key={r}>{r}</li>)}</ul> : <p className="muted">Aucun résultat mesuré n'est publié pour l'instant.</p>}
+      {p.trainingResults?.rows?.length > 0 && <>
+        <h2>Sessions d'entraînement PPO</h2>
+        <p className="muted small">{p.trainingResults.context}</p>
+        <div className="benchmark-scroll"><table className="benchmark-table">
+          <thead><tr><th>Session</th><th>Récompense</th><th>Qualité</th><th>Latence</th><th>Pi3 / Pi5</th></tr></thead>
+          <tbody>{p.trainingResults.rows.map((r) => (
+            <tr key={r.session}><th scope="row">{r.session}</th><td>{r.reward}</td><td>{r.quality}</td><td>{r.latency}</td><td>{r.distribution}</td></tr>
+          ))}</tbody>
+        </table></div>
+      </>}
+      {p.benchmark?.rows?.length > 0 && <>
+        <h2>Comparaison des algorithmes d'ordonnancement</h2>
+        <p className="muted small">{p.benchmark.context}</p>
+        <div className="benchmark-scroll"><table className="benchmark-table">
+          <thead><tr><th>Algorithme</th><th>Latence moyenne</th><th>Qualité moyenne</th><th>Pi3 / Pi5</th></tr></thead>
+          <tbody>{p.benchmark.rows.map((r) => (
+            <tr key={r.algorithm} className={r.algorithm === 'PPO' ? 'benchmark-highlight' : ''}>
+              <th scope="row">{r.algorithm}</th><td>{r.latency}</td><td>{r.quality}</td><td>{r.load}</td>
+            </tr>
+          ))}</tbody>
+        </table></div>
+        <p className="muted small">Le PPO réduit ici la latence moyenne, mais le score de qualité de 0,60 est inférieur à celui des quatre méthodes classiques. Ces données proviennent d'une simulation, pas d'une validation sur matériel en production.</p>
+      </>}
       {p.images.length > 0 && <><h2>Architecture du projet</h2><div className="shots">{p.images.map((src) => <img key={src} src={src} alt={`Schéma du projet ${p.title}`} loading="lazy" />)}</div></>}
       {p.wiring?.length > 0 && <>
         <h2>Tableau de câblage ESP32 / LoRa SX1278</h2>
@@ -220,6 +243,25 @@ function Parcours() {
   )
 }
 
+function Certifications() {
+  return (
+    <Section id="certifications" title="Certifications et distinctions">
+      <div className="certification-grid">
+        {certifications.map((cert) => (
+          <article className="certification-card" key={cert.id}>
+            <span className="meta">{cert.period}</span>
+            <h3>{cert.title}</h3>
+            <p className="certification-issuer">{cert.issuer}</p>
+            <p>{cert.description}</p>
+            <p className="muted small">Justificatif : {cert.verification.toLowerCase()}.</p>
+          </article>
+        ))}
+      </div>
+      <p className="muted small">Les justificatifs contenant des données personnelles ne sont pas publiés sur le site.</p>
+    </Section>
+  )
+}
+
 function Contact() {
   return (
     <Section id="contact" title="Contact">
@@ -246,7 +288,7 @@ export default function App() {
       <a className="skip" href="#contenu">Aller au contenu</a>
       <Header />
       <div id="contenu">
-        {home ? <main><Hero /><About /><Projects /><Skills /><Parcours /><Contact /></main> : proj ? <ProjectPage p={proj} /> : <NotFound />}
+        {home ? <main><Hero /><About /><Projects /><Skills /><Parcours /><Certifications /><Contact /></main> : proj ? <ProjectPage p={proj} /> : <NotFound />}
       </div>
       <footer className="wrap foot">© {new Date().getFullYear()} {profile.name}</footer>
     </>
