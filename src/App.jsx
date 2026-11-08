@@ -165,7 +165,7 @@ function ProjectPage({ p }) {
         </>
       )}
       {p.codeFile && (
-        <p><a className="btn primary" href={p.codeFile} download>Télécharger le code source original (JSON)</a></p>
+        <p><a className="btn primary" href={`${import.meta.env.BASE_URL}${p.codeFile.replace(/^\//, "")}`} download>Télécharger le code source original (JSON)</a></p>
       )}
       <h2>Liens</h2>
       {L.length ? <ul className="social">{L.map(([l, u]) => <li key={l}><a href={u} target="_blank" rel="noopener noreferrer">{l}</a></li>)}</ul> : <p className="muted">Dépôt GitHub dédié non disponible pour ce projet. Les extraits présentés ci-dessus sont signalés selon leur origine.</p>}
