@@ -22,80 +22,256 @@ export const categories = ['IA', 'IoT', 'Embarqué', 'Automatisation', 'Logiciel
 // status des fonctionnalités : 'ok' (implémenté) | 'wip' (en cours) | 'todo' (à développer) | '?' (à confirmer)
 export const projects = [
   {
-    id: 'orchestration-llm',
-    title: "Orchestration distribuée de modèles de langage",
-    category: 'IA',
-    tag: 'Travail expérimental',
-    summary: "Ordonnanceur intelligent qui répartit des tâches entre des travailleurs simulés, guidé par apprentissage par renforcement.",
-    problem: "Répartir des requêtes vers plusieurs modèles de langage hétérogènes sans saturer les machines : la charge CPU/RAM, la température et la file d'attente varient, et toutes les tâches n'ont pas la même complexité.",
-    objectives: [
-      "Concevoir un ordonnanceur qui choisit le travailleur et le modèle adaptés à chaque tâche.",
-      "Définir un environnement de renforcement avec une récompense combinant latence, qualité, équilibrage de charge et adéquation modèle/tâche.",
-      "Faire communiquer les composants par messages MQTT.",
+    "id": "orchestration-llm",
+    "title": "Orchestration intelligente et distribuée de modèles LLM",
+    "category": "IA",
+    "tag": "PFA — ENSAM Casablanca / CCPS",
+    "summary": "Orchestrateur de requêtes LLM combinant MQTT, Ollama et un ordonnanceur à apprentissage par renforcement (PPO), avec repli heuristique.",
+    "problem": "Répartir des requêtes de complexités variables entre des workers aux ressources limitées, sans choisir systématiquement la même machine et en tenant compte des indicateurs de charge.",
+    "objectives": [
+      "Définir un environnement Gymnasium et une fonction de récompense pour l'ordonnancement.",
+      "Analyser complexité et urgence des requêtes ; construire les observations des workers.",
+      "Distribuer les tâches par MQTT et superviser les réponses et métriques.",
+      "Exploiter une politique PPO lorsqu'un modèle entraîné est disponible, sinon une sélection heuristique."
     ],
-    flow: ['Tâches entrantes', 'Ordonnanceur (agent RL)', 'Broker MQTT', 'Travailleurs simulés', 'Retour : latence, qualité'],
-    stack: ['Python', 'MQTT', 'LLM', 'Apprentissage par renforcement', 'Systèmes distribués'],
-    state: "L'état observé par l'agent inclut CPU, RAM, température, longueur de file et complexité de la tâche.",
-    contribution: 'À compléter : décrivez précisément ce que vous avez conçu et codé.',
-    features: [
-      { label: 'Environnement de renforcement et fonction de récompense', status: '?' },
-      { label: 'Travailleurs simulés', status: '?' },
-      { label: 'Communication MQTT', status: '?' },
+    "flow": [
+      "Requête utilisateur",
+      "Analyse de complexité",
+      "Scheduler PPO / heuristique",
+      "Broker MQTT",
+      "Workers pi3 / pi5 + Ollama",
+      "Réponse"
     ],
-    results: [], // Aucune mesure réelle fournie : n'ajoutez ici que des résultats mesurés.
-    links: { github: 'https://www.linkedin.com/in/mohamed-taha-kadiri-2434003b1/', demo: '' },
-    images: [],
+    "stack": [
+      "Python",
+      "Gymnasium",
+      "Stable-Baselines3 (PPO)",
+      "MQTT / Mosquitto",
+      "Ollama",
+      "FastAPI",
+      "Systèmes distribués"
+    ],
+    "state": "Les scripts MQTT fournis ciblent deux workers (pi3 et pi5). Un autre fichier, gateway.py, définit une passerelle HTTP avec trois profils de workers (pi3, pi4 et pi5). Le fichier de poids PPO est référencé dans le code, mais n'a pas été retrouvé parmi les fichiers publiés.",
+    "contribution": "Développement des composants d'orchestration, du worker MQTT, de l'environnement RL et de la passerelle HTTP dans le cadre du projet PFA.",
+    "features": [
+      {
+        "label": "Environnement Gymnasium et récompense multi-critères",
+        "status": "ok"
+      },
+      {
+        "label": "Ordonnancement MQTT à deux workers et communication avec Ollama",
+        "status": "ok"
+      },
+      {
+        "label": "Chargement PPO avec repli heuristique si modèle absent",
+        "status": "ok"
+      },
+      {
+        "label": "Gateway FastAPI / WebSocket à profils multiples",
+        "status": "ok"
+      },
+      {
+        "label": "Poids entraînés PPO disponibles dans le dépôt",
+        "status": "todo"
+      }
+    ],
+    "results": [],
+    "links": {
+      "github": "https://github.com/Mtkadiri/portfolio/tree/main/public/code/orchestration-llm",
+      "demo": ""
+    },
+    "images": [
+      "./img/architecture-pfa.svg"
+    ],
+    "sources": [
+      {
+        "label": "scheduler_mqtt.py",
+        "path": "code/orchestration-llm/scheduler_mqtt.py",
+        "desc": "Ordonnanceur MQTT et chargement PPO"
+      },
+      {
+        "label": "worker_mqtt.py",
+        "path": "code/orchestration-llm/worker_mqtt.py",
+        "desc": "Workers et requêtes Ollama"
+      },
+      {
+        "label": "rl_environment.py",
+        "path": "code/orchestration-llm/rl_environment.py",
+        "desc": "Environnement d'apprentissage Gymnasium"
+      },
+      {
+        "label": "gateway.py",
+        "path": "code/orchestration-llm/gateway.py",
+        "desc": "API et supervision FastAPI"
+      }
+    ]
   },
   {
-    id: 'controle-routier-iot',
-    title: 'Système intelligent de contrôle routier IoT',
-    category: 'IoT',
-    tag: 'Prototype',
-    summary: "Surveillance du trafic, détection d'excès de vitesse, lecture de plaques et supervision en temps réel.",
-    problem: "Surveiller le trafic et repérer les excès de vitesse à distance, avec remontée des données vers un tableau de supervision.",
-    objectives: [
-      "Mesurer le trafic et la vitesse avec des nœuds embarqués.",
-      "Transmettre les données par LoRa et MQTT.",
-      "Lire les plaques d'immatriculation (OCR) et superviser en temps réel.",
+    "id": "controle-routier-iot",
+    "title": "Système intelligent de contrôle routier IoT",
+    "category": "IoT",
+    "tag": "Prototype embarqué",
+    "summary": "Détection de vitesse par capteur ultrason, déclenchement d'une capture pour OCR de plaque et transmission LoRa vers un récepteur qui publie les données en MQTT.",
+    "problem": "Relier la détection d'un véhicule à une acquisition visuelle et à une transmission de données de contrôle vers un système de supervision.",
+    "objectives": [
+      "Mesurer des distances successives à l'aide d'un capteur ultrason et estimer une vitesse.",
+      "Déclencher un serveur Flask pour récupérer une image et solliciter un service OCR.",
+      "Envoyer plaque et vitesse via radio LoRa entre deux cartes ESP32.",
+      "Publier les messages décodés dans un topic MQTT pour leur exploitation ultérieure."
     ],
-    flow: ['Capteurs + ESP32', 'Liaison LoRa', 'Passerelle / MQTT', 'Firebase', 'Supervision Node-RED'],
-    stack: ['ESP32', 'LoRa', 'MQTT', 'Firebase', 'Node-RED'],
-    contribution: 'À compléter.',
-    features: [
-      { label: 'Surveillance du trafic', status: '?' },
-      { label: "Détection d'excès de vitesse", status: '?' },
-      { label: 'Reconnaissance de plaques (OCR)', status: '?' },
-      { label: 'Supervision temps réel', status: '?' },
+    "flow": [
+      "Capteur ultrason / ESP32 émetteur",
+      "Détection de vitesse",
+      "Serveur Flask + caméra",
+      "OCR de la plaque",
+      "Liaison LoRa SX1278",
+      "ESP32 récepteur",
+      "Broker MQTT"
     ],
-    results: [],
-    links: { github: 'https://www.linkedin.com/in/mohamed-taha-kadiri-2434003b1/', demo: '' },
-    images: [],
+    "stack": [
+      "ESP32",
+      "C++ / Arduino",
+      "Ultrason",
+      "LoRa SX1278",
+      "Wi-Fi / HTTP",
+      "Flask",
+      "OCR",
+      "MQTT"
+    ],
+    "state": "Le seuil du prototype est fixé à 5 km/h dans le code fourni (valeur d'essai, pas une limite routière). L'émetteur s'arrête après la première détection. Le fichier serveur_original.txt a été fourni sous forme de texte dont la syntaxe Python est incomplète ; il est publié comme archive documentaire, pas comme serveur exécutable.",
+    "contribution": "Programmation de l'émetteur et du récepteur, intégration HTTP/LoRa/MQTT et construction de la chaîne de déclenchement OCR.",
+    "features": [
+      {
+        "label": "Acquisition ultrason et estimation de vitesse",
+        "status": "ok"
+      },
+      {
+        "label": "Déclenchement HTTP / OCR",
+        "status": "ok"
+      },
+      {
+        "label": "Transmission LoRa des données de contrôle",
+        "status": "ok"
+      },
+      {
+        "label": "Réception LoRa et publication MQTT (vehicle/data)",
+        "status": "ok"
+      },
+      {
+        "label": "Validation métrologique en conditions réelles",
+        "status": "?"
+      }
+    ],
+    "results": [],
+    "links": {
+      "github": "https://github.com/Mtkadiri/portfolio/tree/main/public/code/controle-routier-iot",
+      "demo": ""
+    },
+    "images": [
+      "./img/architecture-routier.svg"
+    ],
+    "sources": [
+      {
+        "label": "emetteur_COM3.cpp",
+        "path": "code/controle-routier-iot/emetteur_COM3.cpp",
+        "desc": "ESP32 émetteur, vitesse, HTTP, LoRa"
+      },
+      {
+        "label": "recepteur_COM4.cpp",
+        "path": "code/controle-routier-iot/recepteur_COM4.cpp",
+        "desc": "ESP32 récepteur LoRa vers MQTT"
+      },
+      {
+        "label": "serveur_original.txt",
+        "path": "code/controle-routier-iot/serveur_original.txt",
+        "desc": "Texte source du serveur Flask et du relais OCR (syntaxe incomplète)"
+      }
+    ]
   },
   {
-    id: 'capteurs-lorawan',
-    title: 'Surveillance de capteurs avec LoRaWAN',
-    category: 'Embarqué',
-    tag: 'Prototype',
-    summary: "Collecte de mesures environnementales, transmission sans fil et visualisation dans ChirpStack.",
-    problem: "Collecter température et humidité sur un nœud autonome, les transmettre sans fil sur longue portée et les visualiser.",
-    objectives: [
-      "Lire un capteur DHT11 avec un ESP32.",
-      "Émettre les mesures via un module radio RFM96 en LoRaWAN.",
-      "Recevoir et visualiser les données dans ChirpStack.",
+    "id": "capteurs-lorawan",
+    "title": "Système IoT basé sur ESP32 et LoRa (RF96)",
+    "category": "Embarqué",
+    "tag": "Projet métier — LoRaWAN",
+    "summary": "Prototype ESP32 + module radio RF96/SX127x : acquisition DHT11, transmission LoRaWAN et variante connectée à un serveur de prédiction d'état d'équipement.",
+    "problem": "Collecter des mesures et remonter des informations de terrain par radio longue portée, en associant une passerelle et une plateforme de supervision.",
+    "objectives": [
+      "Configurer le bus SPI, les interruptions et le module RF96 avec LMIC.",
+      "Lire température/humidité avec le capteur DHT11 et émettre des trames LoRaWAN.",
+      "Exploiter la passerelle et la chaîne ChirpStack / Node-RED documentées par les essais.",
+      "Expérimenter une variante ESP32 envoyant des séquences au serveur de prédiction et retransmettant un état/RUL via LoRaWAN."
     ],
-    flow: ['DHT11', 'ESP32', 'Radio RFM96', 'Passerelle LoRaWAN', 'ChirpStack', 'Visualisation'],
-    stack: ['ESP32', 'RFM96', 'DHT11', 'LoRaWAN', 'ChirpStack'],
-    contribution: 'À compléter.',
-    features: [
-      { label: 'Acquisition DHT11', status: '?' },
-      { label: 'Transmission LoRaWAN', status: '?' },
-      { label: 'Visualisation ChirpStack', status: '?' },
+    "flow": [
+      "DHT11 / entrées d'essai",
+      "ESP32 + RF96 (LMIC)",
+      "LoRaWAN",
+      "Passerelle / ChirpStack",
+      "Supervision Node-RED"
     ],
-    results: [],
-    links: { github: '', demo: '' },
-    images: [],
-  },
+    "stack": [
+      "ESP32",
+      "Arduino C++",
+      "RF96 / SX127x",
+      "LoRaWAN / LMIC",
+      "SPI",
+      "DHT11",
+      "Raspberry Pi",
+      "ChirpStack",
+      "Node-RED",
+      "FreeRTOS"
+    ],
+    "state": "Deux versions de code ont été fournies : un émetteur DHT11/LoRaWAN et une version avancée avec requête HTTP /predict, file FreeRTOS et envoi d'un état et d'une estimation RUL. Dans cette dernière version, certaines entrées (vibration, RPM et durée) sont simulées ; le modèle du serveur n'est pas inclus. Les identifiants LoRaWAN et Wi-Fi ont été neutralisés avant publication.",
+    "contribution": "Câblage et configuration ESP32/RF96, programmation LMIC, gestion des mesures, expérimentation de la communication radio et de l'intégration serveur.",
+    "features": [
+      {
+        "label": "Acquisition DHT11 et émission LoRaWAN",
+        "status": "ok"
+      },
+      {
+        "label": "Configuration SPI et LMIC / activation ABP",
+        "status": "ok"
+      },
+      {
+        "label": "Variante HTTP de prédiction avec file FreeRTOS",
+        "status": "ok"
+      },
+      {
+        "label": "Essais de passerelle, serveur et tableau de bord",
+        "status": "ok"
+      },
+      {
+        "label": "Modèle de prédiction côté serveur disponible",
+        "status": "todo"
+      }
+    ],
+    "results": [],
+    "links": {
+      "github": "https://github.com/Mtkadiri/portfolio/tree/main/public/code/capteurs-lorawan",
+      "demo": ""
+    },
+    "images": [
+      "./img/architecture-lorawan.svg"
+    ],
+    "sources": [
+      {
+        "label": "lora_end_divice_final.ino",
+        "path": "code/capteurs-lorawan/lora_end_divice_final.ino",
+        "desc": "Variante LoRaWAN + HTTP /predict + FreeRTOS"
+      },
+      {
+        "label": "ESP32_RF96_version_initiale.txt",
+        "path": "code/capteurs-lorawan/ESP32_RF96_version_initiale.txt",
+        "desc": "Version DHT11 et transmission LoRaWAN"
+      },
+      {
+        "label": "lmic_config.h",
+        "path": "code/capteurs-lorawan/lmic_config.h",
+        "desc": "Configuration LMIC initiale"
+      }
+    ]
+  }
 ]
+
 
 // level (optionnel) : 1 notions, 2 pratique, 3 solide. Sans level : pas d'indicateur.
 export const skills = [
