@@ -43,3 +43,12 @@ Les trois fiches du site pointent directement vers des **fichiers réels fournis
 
 ### Voir les fichiers
 Par exemple : `https://github.com/Mtkadiri/portfolio/tree/main/public/code/orchestration-llm`. Les trois fiches du site affichent chaque fichier séparément.
+
+## Parcours, certifications et résultats PFA (mise à jour CV du 08/11/2026)
+
+- **Parcours académique :** ENSAM Casablanca 2024–présent ; DEUG Faculté des Sciences d'Oujda 2021–2024 ; baccalauréat 2020–2021.
+- **Stages :** OCP Group de juillet à août 2025 ; PFA CCPS du 15 juin au 30 septembre 2026.
+- **Certifications :** Cisco Networking Academy — Python Essentials 1 (04/10/2026) ; SNEE UH2C (promotion 2025–2026, délivré le 23/06/2026) ; MATLAB Onramp (mention CV 2026, justificatif non joint).
+- **Comparaison PPO :** tableaux des trois sessions d'entraînement et benchmark sur 1 000 requêtes simulées. Résultats issus du rapport du PFA : PPO 31,13 s contre Round-Robin 43,35 s ; la qualité PPO (0,60) est inférieure à celle de Round-Robin (0,68). Les chiffres ne doivent pas être présentés comme des mesures de production.
+- **Modèle entraîné :** `models/ppo_scheduler_2cards.zip` est cité dans les scripts et rapports, mais le binaire n'est pas disponible dans les fichiers accessibles ; aucun téléchargement factice n'est proposé.
+- **Vie privée :** les PDF d'attestation et de CV ne sont pas automatiquement rendus publics ; leurs informations utiles sont intégrées au site, sans exposer de numéro d'étudiant ou de justificatif original.
