@@ -383,12 +383,114 @@ export const projects = [
 
 // level (optionnel) : 1 notions, 2 pratique, 3 solide. Sans level : pas d'indicateur.
 export const skills = [
-  { cat: 'Programmation', items: [{ n: 'Python' }, { n: 'C' }, { n: 'JavaScript' }, { n: 'HTML / CSS' }] },
-  { cat: 'IA et apprentissage automatique', items: [{ n: 'Apprentissage par renforcement' }, { n: 'Modèles de langage (LLM)' }] },
-  { cat: 'IoT et systèmes embarqués', items: [{ n: 'ESP32' }, { n: 'LoRa / LoRaWAN' }, { n: 'Capteurs (DHT11)' }] },
-  { cat: 'Communication industrielle et protocoles', items: [{ n: 'MQTT' }, { n: 'ChirpStack' }] },
-  { cat: 'Automatisation et supervision', items: [{ n: 'TIA Portal' }, { n: 'Node-RED' }] },
-  { cat: 'Outils de développement', items: [{ n: 'Firebase' }, { n: 'Git / GitHub' }] },
+  {
+    "cat": "Programmation",
+    "items": [
+      {
+        "n": "Python"
+      },
+      {
+        "n": "C"
+      },
+      {
+        "n": "JavaScript"
+      },
+      {
+        "n": "HTML / CSS"
+      },
+      {
+        "n": "Assembleur"
+      },
+      {
+        "n": "VHDL"
+      }
+    ]
+  },
+  {
+    "cat": "IA et apprentissage",
+    "items": [
+      {
+        "n": "Apprentissage par renforcement (PPO)"
+      },
+      {
+        "n": "LLM / Ollama"
+      },
+      {
+        "n": "Gymnasium"
+      },
+      {
+        "n": "Stable-Baselines3"
+      }
+    ]
+  },
+  {
+    "cat": "IIoT et systèmes embarqués",
+    "items": [
+      {
+        "n": "ESP32"
+      },
+      {
+        "n": "LoRa / LoRaWAN"
+      },
+      {
+        "n": "RF96"
+      },
+      {
+        "n": "DHT11"
+      },
+      {
+        "n": "MQTT"
+      },
+      {
+        "n": "ChirpStack"
+      }
+    ]
+  },
+  {
+    "cat": "Automatisation et supervision",
+    "items": [
+      {
+        "n": "TIA Portal"
+      },
+      {
+        "n": "Node-RED"
+      },
+      {
+        "n": "MATLAB / Simulink"
+      }
+    ]
+  },
+  {
+    "cat": "Développement et outils",
+    "items": [
+      {
+        "n": "Flask"
+      },
+      {
+        "n": "FastAPI"
+      },
+      {
+        "n": "Git / GitHub"
+      },
+      {
+        "n": "Firebase"
+      },
+      {
+        "n": "Unity / XR Toolkit"
+      }
+    ]
+  },
+  {
+    "cat": "Conception assistée par ordinateur",
+    "items": [
+      {
+        "n": "CATIA V5 (bases)"
+      },
+      {
+        "n": "AutoCAD (bases)"
+      }
+    ]
+  }
 ]
 
 export const timeline = [
