@@ -58,3 +58,11 @@ nav button:hover{color:var(--txt);background:var(--panel)}.burger{display:none;b
 nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 16px}nav.open{display:flex}
 nav button{text-align:left;padding:12px}.flow li:not(:last-child)::after{display:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Sources techniques authentiques */
+.code-files{list-style:none;display:grid;gap:12px;padding:0;margin:16px 0 26px}
+.code-files li{display:flex;flex-wrap:wrap;flex-direction:column;gap:6px;padding:15px 18px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:4px;min-width:0}
+.code-files-name{font:.94rem var(--mono);font-weight:700;overflow-wrap:anywhere;color:#dbe4f3}
+.code-files-links{display:flex;gap:18px;flex-wrap:wrap;margin-top:5px}
+.code-files-links a{font-size:.92rem;text-underline-offset:3px}
+.shots img{height:auto;display:block;background:var(--panel)}
