@@ -58,3 +58,10 @@ nav button:hover{color:var(--txt);background:var(--panel)}.burger{display:none;b
 nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 16px}nav.open{display:flex}
 nav button{text-align:left;padding:12px}.flow li:not(:last-child)::after{display:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Extraits de code affichés dans les fiches projets */
+.code-head{display:flex;justify-content:space-between;align-items:center;gap:12px;background:#16243b;border:1px solid var(--line);border-bottom:0;padding:8px 14px;border-radius:4px 4px 0 0;font:.85rem var(--mono);color:#b9c6dd}
+.code-head button{cursor:pointer;background:transparent;color:var(--acc);border:1px solid var(--line);padding:5px 10px;border-radius:4px;font:inherit}
+.code-head button:hover{border-color:var(--acc)}
+.code-block{margin:0 0 24px;max-width:100%;overflow-x:auto;background:#07111f;border:1px solid var(--line);border-radius:0 0 4px 4px;padding:18px;color:#dbe4f3;font:13px/1.55 var(--mono);tab-size:2;white-space:pre}
+.code-block code{font:inherit}
