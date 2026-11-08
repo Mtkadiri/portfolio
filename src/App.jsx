@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { profile, projects, categories, skills, timeline } from './data.js'
-import { codeExamples } from './codeExamples.js'
 
 const NAV = [['apropos', 'À propos'], ['projets', 'Projets'], ['competences', 'Compétences'], ['parcours', 'Parcours'], ['contact', 'Contact']]
 const STATUS = { ok: 'Implémenté', wip: 'En cours', todo: 'À développer', '?': 'À confirmer' }
@@ -156,19 +155,8 @@ function ProjectPage({ p }) {
       <h2>Résultats</h2>
       {p.results.length ? <ul className="bul">{p.results.map((r) => <li key={r}>{r}</li>)}</ul> : <p className="muted">Aucun résultat mesuré n'est publié pour l'instant.</p>}
       {p.images.length > 0 && <div className="shots">{p.images.map((src) => <img key={src} src={src} alt={`Capture du projet ${p.title}`} loading="lazy" onError={(e) => (e.currentTarget.style.display = 'none')} />)}</div>}
-      {codeExamples[p.id] && (
-        <>
-          <h2>Extrait de code</h2>
-          <p className="muted small">{codeExamples[p.id].label}</p>
-          <div className="code-head"><span>{codeExamples[p.id].language}</span><button type="button" onClick={() => navigator.clipboard?.writeText(codeExamples[p.id].content)}>Copier le code</button></div>
-          <pre className="code-block"><code>{codeExamples[p.id].content}</code></pre>
-        </>
-      )}
-      {p.codeFile && (
-        <p><a className="btn primary" href={`${import.meta.env.BASE_URL}${p.codeFile.replace(/^\//, "")}`} download>Télécharger le code source original (JSON)</a></p>
-      )}
       <h2>Liens</h2>
-      {L.length ? <ul className="social">{L.map(([l, u]) => <li key={l}><a href={u} target="_blank" rel="noopener noreferrer">{l}</a></li>)}</ul> : <p className="muted">Dépôt GitHub dédié non disponible pour ce projet. Les extraits présentés ci-dessus sont signalés selon leur origine.</p>}
+      {L.length ? <ul className="social">{L.map(([l, u]) => <li key={l}><a href={u} target="_blank" rel="noopener noreferrer">{l}</a></li>)}</ul> : <p className="muted">Dépôt et démonstration : pas encore publiés.</p>}
     </main>
   )
 }
