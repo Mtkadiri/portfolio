@@ -294,5 +294,46 @@ export const skills = [
 ]
 
 export const timeline = [
-  { kind: 'Formation', title: "Cycle ingénieur MSEI — ENSAM Casablanca", period: '', text: 'Management des Systèmes Électriques Intelligents.' },
+  {
+    "kind": "Formation",
+    "title": "Cycle ingénieur MSEI — ENSAM Casablanca",
+    "period": "",
+    "text": "Management des Systèmes Électriques Intelligents, option Systèmes Industriels Connectés (SIC). Spécialisation en automatisation, IIoT, systèmes embarqués et intelligence artificielle appliquée à l'industrie."
+  },
+  {
+    "kind": "Formation",
+    "title": "DEUG — Faculté des Sciences d'Oujda",
+    "period": "",
+    "text": "Parcours universitaire scientifique, avec formation fondamentale en mathématiques et informatique."
+  },
+  {
+    "kind": "Stage d'observation",
+    "title": "OCP / JESA — Jorf Lasfar",
+    "period": "",
+    "text": "Étude des contraintes d'une ligne électrique HT 60 kV dans un projet d'aménagement : analyse du cahier des charges, planning Gantt, identification des risques HSE et recommandations techniques."
+  },
+  {
+    "kind": "Stage / PFA",
+    "title": "Orchestration intelligente des LLM — Laboratoire CCPS, ENSAM Casablanca",
+    "period": "2025",
+    "text": "Travail sur un système d'ordonnancement distribué de modèles LLM utilisant Python, MQTT et l'apprentissage par renforcement (PPO). Développement de l'environnement RL, du scheduler et des workers."
+  },
+  {
+    "kind": "Projet académique",
+    "title": "Système intelligent de contrôle routier IoT",
+    "period": "2025",
+    "text": "Prototype de détection de vitesse avec ESP32 et capteur ultrason, reconnaissance de plaques par OCR, transmission LoRa et supervision par MQTT."
+  },
+  {
+    "kind": "Projet métier",
+    "title": "Système IoT ESP32 et LoRa (RF96)",
+    "period": "",
+    "text": "Acquisition de mesures par DHT11, communication LoRaWAN avec LMIC, expérimentation de passerelle et suivi avec ChirpStack et Node-RED."
+  },
+  {
+    "kind": "Certification sportive",
+    "title": "Taekwondo — Ceinture noire, 1er dan",
+    "period": "",
+    "text": "Grade de ceinture noire 1er dan en taekwondo."
+  }
 ]
