@@ -155,6 +155,16 @@ function ProjectPage({ p }) {
       <h2>Résultats</h2>
       {p.results.length ? <ul className="bul">{p.results.map((r) => <li key={r}>{r}</li>)}</ul> : <p className="muted">Aucun résultat mesuré n'est publié pour l'instant.</p>}
       {p.images.length > 0 && <><h2>Architecture du projet</h2><div className="shots">{p.images.map((src) => <img key={src} src={src} alt={`Schéma du projet ${p.title}`} loading="lazy" />)}</div></>}
+      {p.wiring?.length > 0 && <>
+        <h2>Tableau de câblage ESP32 / LoRa SX1278</h2>
+        <div className="wiring-scroll"><table className="wiring-table">
+          <thead><tr><th>Couleur</th><th>Broche LoRa SX1278</th><th>Broche ESP32</th></tr></thead>
+          <tbody>{p.wiring.map(([color, lora, esp32]) => (
+            <tr key={color}><td>{color}</td><td>{lora}</td><td>{esp32}</td></tr>
+          ))}</tbody>
+        </table></div>
+        <p className="muted small">Alimenter le module LoRa en 3,3 V et non en 5 V. Tableau repris du montage fourni.</p>
+      </>}
       {p.sources?.length > 0 && <>
         <h2>Codes sources du projet</h2>
         <p className="muted small">Fichiers issus du projet d'origine. Les identifiants réseau et clés éventuelles sont neutralisés pour une publication publique.</p>
