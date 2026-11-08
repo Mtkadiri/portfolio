@@ -107,6 +107,16 @@ export const projects = [
     ]
   },
   {
+    "wiring": [
+      ["Rouge","VCC","3.3 V"],
+      ["Noir","GND","GND"],
+      ["Jaune","SCK","GPIO 18"],
+      ["Vert","MISO","GPIO 19"],
+      ["Bleu","MOSI","GPIO 23"],
+      ["Orange","NSS / CS","GPIO 5"],
+      ["Violet","RST","GPIO 14"],
+      ["Blanc","DIO0","GPIO 26"]
+    ],
     "id": "controle-routier-iot",
     "title": "Système intelligent de contrôle routier IoT",
     "category": "IoT",
