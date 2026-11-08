@@ -384,19 +384,13 @@ export const projects = [
 // level (optionnel) : 1 notions, 2 pratique, 3 solide. Sans level : pas d'indicateur.
 export const skills = [
   {
-    "cat": "Programmation",
+    "cat": "Langages de programmation",
     "items": [
-      {
-        "n": "Python"
-      },
       {
         "n": "C"
       },
       {
-        "n": "JavaScript"
-      },
-      {
-        "n": "HTML / CSS"
+        "n": "Python"
       },
       {
         "n": "Assembleur"
@@ -407,36 +401,27 @@ export const skills = [
     ]
   },
   {
-    "cat": "IA et apprentissage",
+    "cat": "Développement web",
     "items": [
       {
-        "n": "Apprentissage par renforcement (PPO)"
+        "n": "HTML"
       },
       {
-        "n": "LLM / Ollama"
+        "n": "CSS"
       },
       {
-        "n": "Gymnasium"
-      },
-      {
-        "n": "Stable-Baselines3"
+        "n": "JavaScript"
       }
     ]
   },
   {
-    "cat": "IIoT et systèmes embarqués",
+    "cat": "Systèmes embarqués & IoT",
     "items": [
       {
         "n": "ESP32"
       },
       {
-        "n": "LoRa / LoRaWAN"
-      },
-      {
-        "n": "RF96"
-      },
-      {
-        "n": "DHT11"
+        "n": "LoRa (RF96)"
       },
       {
         "n": "MQTT"
@@ -447,47 +432,49 @@ export const skills = [
     ]
   },
   {
-    "cat": "Automatisation et supervision",
+    "cat": "CAO",
     "items": [
       {
-        "n": "TIA Portal"
-      },
-      {
-        "n": "Node-RED"
-      },
-      {
-        "n": "MATLAB / Simulink"
-      }
-    ]
-  },
-  {
-    "cat": "Développement et outils",
-    "items": [
-      {
-        "n": "Flask"
-      },
-      {
-        "n": "FastAPI"
-      },
-      {
-        "n": "Git / GitHub"
-      },
-      {
-        "n": "Firebase"
-      },
-      {
-        "n": "Unity / XR Toolkit"
-      }
-    ]
-  },
-  {
-    "cat": "Conception assistée par ordinateur",
-    "items": [
-      {
-        "n": "CATIA V5 (bases)"
+        "n": "CATIA V5 (bases 2D/3D, Part Design, Drafting)"
       },
       {
         "n": "AutoCAD (bases)"
+      }
+    ]
+  },
+  {
+    "cat": "Automatisation industrielle",
+    "items": [
+      {
+        "n": "TIA Portal"
+      }
+    ]
+  },
+  {
+    "cat": "Outils & Technologies immersives",
+    "items": [
+      {
+        "n": "Word"
+      },
+      {
+        "n": "Excel"
+      },
+      {
+        "n": "Unity"
+      },
+      {
+        "n": "XR Toolkit"
+      }
+    ]
+  },
+  {
+    "cat": "Modélisation & Simulation",
+    "items": [
+      {
+        "n": "MATLAB"
+      },
+      {
+        "n": "Simulink"
       }
     ]
   }
