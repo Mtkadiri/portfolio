@@ -66,3 +66,9 @@ nav button{text-align:left;padding:12px}.flow li:not(:last-child)::after{display
 .code-files-links{display:flex;gap:18px;flex-wrap:wrap;margin-top:5px}
 .code-files-links a{font-size:.92rem;text-underline-offset:3px}
 .shots img{height:auto;display:block;background:var(--panel)}
+
+.wiring-scroll{overflow-x:auto;margin:16px 0}
+.wiring-table{width:100%;border-collapse:collapse;background:var(--panel);font-size:.94rem}
+.wiring-table th,.wiring-table td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);white-space:nowrap}
+.wiring-table th{font-size:.84rem;color:#b8cff3;background:#182942}
+.wiring-table tr:hover td{background:#15233a}
