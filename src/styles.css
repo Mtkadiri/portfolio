@@ -72,3 +72,17 @@ nav button{text-align:left;padding:12px}.flow li:not(:last-child)::after{display
 .wiring-table th,.wiring-table td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);white-space:nowrap}
 .wiring-table th{font-size:.84rem;color:#b8cff3;background:#182942}
 .wiring-table tr:hover td{background:#15233a}
+
+/* Résultats d'apprentissage (expériences simulées) */
+.benchmark-scroll{overflow-x:auto;max-width:100%;margin:16px 0 22px;border:1px solid var(--line);border-radius:5px}
+.benchmark-table{min-width:580px;width:100%;border-collapse:collapse;background:var(--panel);font-size:.9rem}
+.benchmark-table th,.benchmark-table td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--line);white-space:nowrap}
+.benchmark-table thead th{color:#d1e3fb;font-size:.85rem;background:#182942;font-weight:600}
+.benchmark-table tbody th{font-weight:500;color:#c8d8f5}
+.benchmark-table tbody tr:last-child th,.benchmark-table tbody tr:last-child td{border-bottom:none}
+.benchmark-highlight th,.benchmark-highlight td{background:#182d49;color:#e7f0ff;font-weight:650}
+.certification-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.certification-card{padding:20px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:4px}
+.certification-card h3{margin:8px 0;font-size:1.13rem}
+.certification-card p{font-size:.92rem;line-height:1.55;margin:.55rem 0}
+.certification-card .certification-issuer{color:#b9c6dd;font-weight:600}
