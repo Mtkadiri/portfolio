@@ -25,7 +25,7 @@ export const projects = [
     "id": "orchestration-llm",
     "title": "Orchestration intelligente et distribuée de modèles LLM",
     "category": "IA",
-    "tag": "PFA — ENSAM Casablanca / CCPS",
+    "tag": "Stage PFA — CCPS / ENSAM Casablanca (2026)",
     "summary": "Orchestrateur de requêtes LLM combinant MQTT, Ollama et un ordonnanceur à apprentissage par renforcement (PPO), avec repli heuristique.",
     "problem": "Répartir des requêtes de complexités variables entre des workers aux ressources limitées, sans choisir systématiquement la même machine et en tenant compte des indicateurs de charge.",
     "objectives": [
@@ -75,7 +75,12 @@ export const projects = [
         "status": "todo"
       }
     ],
-    "results": [],
+    "results": [
+      "Évaluation comparative sur 1 000 requêtes simulées : latence PPO de 31,13 s contre 43,35 s avec Round-Robin (réduction de 28,2 %).",
+      "Le score de qualité simulé du PPO est de 0,60 dans la comparaison, contre 0,68 pour Round-Robin : le gain de latence s'accompagne d'un compromis sur la qualité.",
+      "Troisième session d'entraînement PPO : récompense moyenne +104,28 ; qualité 0,64 ; latence 31,13 s ; répartition Pi3/Pi5 de 63,6 % / 36,4 %.",
+      "Résultats issus du simulateur et du rapport PFA ; aucune mesure équivalente en production sur les cartes physiques n'est fournie."
+    ],
     "links": {
       "github": "https://github.com/Mtkadiri/portfolio/tree/main/public/code/orchestration-llm",
       "demo": ""
@@ -104,23 +109,116 @@ export const projects = [
         "path": "code/orchestration-llm/gateway.py",
         "desc": "API et supervision FastAPI"
       }
-    ]
+    ],
+    "benchmark": {
+      "context": "Évaluation sur 1 000 requêtes simulées ; durée moyenne par requête et qualité simulée. Les résultats ne décrivent pas des essais physiques en production.",
+      "rows": [
+        {
+          "algorithm": "Round-Robin",
+          "latency": "43,35 s",
+          "quality": "0,68",
+          "load": "50 % / 50 %"
+        },
+        {
+          "algorithm": "Least-Loaded",
+          "latency": "43,59 s",
+          "quality": "0,68",
+          "load": "50 % / 50 %"
+        },
+        {
+          "algorithm": "Random",
+          "latency": "43,60 s",
+          "quality": "0,69",
+          "load": "48,4 % / 51,6 %"
+        },
+        {
+          "algorithm": "FIFO",
+          "latency": "51,70 s",
+          "quality": "0,79",
+          "load": "33,7 % / 66,3 %"
+        },
+        {
+          "algorithm": "PPO",
+          "latency": "31,13 s",
+          "quality": "0,60",
+          "load": "≈ 67 % / 33 %"
+        }
+      ]
+    },
+    "trainingResults": {
+      "context": "Trois sessions d'entraînement présentées dans le rapport PFA ; scores obtenus en simulation.",
+      "rows": [
+        {
+          "session": "1 — biais Pi3",
+          "reward": "−557,12",
+          "quality": "0,37",
+          "latency": "20,67 s",
+          "distribution": "100 % / 0 %"
+        },
+        {
+          "session": "2 — biais Pi5",
+          "reward": "+572,67",
+          "quality": "0,95",
+          "latency": "63,96 s",
+          "distribution": "9 % / 91 %"
+        },
+        {
+          "session": "3 — compromis final",
+          "reward": "+104,28",
+          "quality": "0,64",
+          "latency": "31,13 s",
+          "distribution": "63,6 % / 36,4 %"
+        }
+      ]
+    }
   },
   {
     "wiring": [
-      ["Rouge","VCC","3.3 V"],
-      ["Noir","GND","GND"],
-      ["Jaune","SCK","GPIO 18"],
-      ["Vert","MISO","GPIO 19"],
-      ["Bleu","MOSI","GPIO 23"],
-      ["Orange","NSS / CS","GPIO 5"],
-      ["Violet","RST","GPIO 14"],
-      ["Blanc","DIO0","GPIO 26"]
+      [
+        "Rouge",
+        "VCC",
+        "3.3 V"
+      ],
+      [
+        "Noir",
+        "GND",
+        "GND"
+      ],
+      [
+        "Jaune",
+        "SCK",
+        "GPIO 18"
+      ],
+      [
+        "Vert",
+        "MISO",
+        "GPIO 19"
+      ],
+      [
+        "Bleu",
+        "MOSI",
+        "GPIO 23"
+      ],
+      [
+        "Orange",
+        "NSS / CS",
+        "GPIO 5"
+      ],
+      [
+        "Violet",
+        "RST",
+        "GPIO 14"
+      ],
+      [
+        "Blanc",
+        "DIO0",
+        "GPIO 26"
+      ]
     ],
     "id": "controle-routier-iot",
     "title": "Système intelligent de contrôle routier IoT",
     "category": "IoT",
-    "tag": "Prototype embarqué",
+    "tag": "Projet académique — oct.–déc. 2025",
     "summary": "Détection de vitesse par capteur ultrason, déclenchement d'une capture pour OCR de plaque et transmission LoRa vers un récepteur qui publie les données en MQTT.",
     "problem": "Relier la détection d'un véhicule à une acquisition visuelle et à une transmission de données de contrôle vers un système de supervision.",
     "objectives": [
@@ -202,7 +300,7 @@ export const projects = [
     "id": "capteurs-lorawan",
     "title": "Système IoT basé sur ESP32 et LoRa (RF96)",
     "category": "Embarqué",
-    "tag": "Projet métier — LoRaWAN",
+    "tag": "Projet métier — mars–mai 2026",
     "summary": "Prototype ESP32 + module radio RF96/SX127x : acquisition DHT11, transmission LoRaWAN et variante connectée à un serveur de prédiction d'état d'équipement.",
     "problem": "Collecter des mesures et remonter des informations de terrain par radio longue portée, en associant une passerelle et une plateforme de supervision.",
     "objectives": [
@@ -295,45 +393,78 @@ export const skills = [
 
 export const timeline = [
   {
-    "kind": "Formation",
-    "title": "Cycle ingénieur MSEI — ENSAM Casablanca",
-    "period": "",
-    "text": "Management des Systèmes Électriques Intelligents, option Systèmes Industriels Connectés (SIC). Spécialisation en automatisation, IIoT, systèmes embarqués et intelligence artificielle appliquée à l'industrie."
-  },
-  {
-    "kind": "Formation",
-    "title": "DEUG — Faculté des Sciences d'Oujda",
-    "period": "",
-    "text": "Parcours universitaire scientifique, avec formation fondamentale en mathématiques et informatique."
+    "kind": "Stage PFA",
+    "title": "Laboratoire CCPS — ENSAM Casablanca",
+    "period": "15/06/2026 – 30/09/2026",
+    "text": "Conception d'un orchestrateur de modèles LLM avec MQTT, Python et apprentissage par renforcement (PPO) : environnement RL, ordonnanceur, workers et tolérance aux pannes."
   },
   {
     "kind": "Stage d'observation",
-    "title": "OCP / JESA — Jorf Lasfar",
-    "period": "",
-    "text": "Étude des contraintes d'une ligne électrique HT 60 kV dans un projet d'aménagement : analyse du cahier des charges, planning Gantt, identification des risques HSE et recommandations techniques."
+    "title": "OCP Group — Casablanca",
+    "period": "07/2025 – 08/2025",
+    "text": "Participation à une étude de déviation de ligne haute tension pour le projet de Jorf Lasfar : contraintes techniques, continuité du réseau, risques HSE et suivi des travaux."
   },
   {
-    "kind": "Stage / PFA",
-    "title": "Orchestration intelligente des LLM — Laboratoire CCPS, ENSAM Casablanca",
-    "period": "2025",
-    "text": "Travail sur un système d'ordonnancement distribué de modèles LLM utilisant Python, MQTT et l'apprentissage par renforcement (PPO). Développement de l'environnement RL, du scheduler et des workers."
+    "kind": "Formation",
+    "title": "Cycle ingénieur MSEI — ENSAM Casablanca, Université Hassan II",
+    "period": "2024 – présent",
+    "text": "Management des Systèmes Électriques Intelligents, option Systèmes Industriels Connectés (SIC). Automatisation, IoT industriel, systèmes embarqués et IA appliquée à l'industrie."
+  },
+  {
+    "kind": "Formation",
+    "title": "DEUG — Faculté des Sciences d'Oujda, Université Mohammed Premier",
+    "period": "2021 – 2024",
+    "text": "Sciences Mathématiques et Informatiques — mention Assez Bien."
+  },
+  {
+    "kind": "Formation",
+    "title": "Baccalauréat — Lycée Abdellah Ghennoun, Oujda",
+    "period": "09/2020 – 06/2021",
+    "text": "Sciences expérimentales, option Sciences Physiques — mention Bien."
+  },
+  {
+    "kind": "Projet académique",
+    "title": "Système IoT ESP32 et LoRa (RF96)",
+    "period": "03/2026 – 05/2026",
+    "text": "Acquisition de données DHT11, communication LoRaWAN, intégration ChirpStack et visualisation en temps réel."
   },
   {
     "kind": "Projet académique",
     "title": "Système intelligent de contrôle routier IoT",
-    "period": "2025",
-    "text": "Prototype de détection de vitesse avec ESP32 et capteur ultrason, reconnaissance de plaques par OCR, transmission LoRa et supervision par MQTT."
+    "period": "10/2025 – 12/2025",
+    "text": "Détection des excès de vitesse et reconnaissance de plaques par OCR avec ESP32, LoRa, MQTT, Firebase et Node-RED."
   },
   {
-    "kind": "Projet métier",
-    "title": "Système IoT ESP32 et LoRa (RF96)",
-    "period": "",
-    "text": "Acquisition de mesures par DHT11, communication LoRaWAN avec LMIC, expérimentation de passerelle et suivi avec ChirpStack et Node-RED."
-  },
-  {
-    "kind": "Certification sportive",
+    "kind": "Distinction sportive",
     "title": "Taekwondo — Ceinture noire, 1er dan",
     "period": "",
-    "text": "Grade de ceinture noire 1er dan en taekwondo."
+    "text": "Grade de ceinture noire, premier dan."
+  }
+]
+
+export const certifications = [
+  {
+    "id": "cisco-python",
+    "title": "Python Essentials 1",
+    "issuer": "Cisco Networking Academy",
+    "period": "04/10/2026",
+    "verification": "Certificat fourni",
+    "description": "Formation de programmation Python réussie dans le cadre du programme Cisco Networking Academy."
+  },
+  {
+    "id": "snee",
+    "title": "Statut National Étudiant Entrepreneur (SNEE)",
+    "issuer": "Université Hassan II de Casablanca — Pôle Insertion & Entrepreneuriat",
+    "period": "2025–2026 (délivré le 23/06/2026)",
+    "verification": "Certificat fourni",
+    "description": "Statut national d'étudiant entrepreneur, 7e promotion SNEE."
+  },
+  {
+    "id": "matlab-onramp",
+    "title": "MATLAB Onramp",
+    "issuer": "MathWorks",
+    "period": "2026",
+    "verification": "Mentionné dans le CV",
+    "description": "Formation d'initiation à MATLAB indiquée dans le CV."
   }
 ]
