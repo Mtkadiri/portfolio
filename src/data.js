@@ -51,126 +51,16 @@ export const projects = [
       "FastAPI",
       "Systèmes distribués"
     ],
-    "state": "Les scripts MQTT fournis ciblent deux workers (pi3 et pi5). Un autre fichier, gateway.py, définit une passerelle HTTP avec trois profils de workers (pi3, pi4 et pi5). Le fichier de poids PPO est référencé dans le code, mais n'a pas été retrouvé parmi les fichiers publiés.",
+    "state": "Projet réalisé au laboratoire CCPS. Le code source et les résultats détaillés sont réservés au laboratoire et aux collaborateurs autorisés.",
     "contribution": "Développement des composants d'orchestration, du worker MQTT, de l'environnement RL et de la passerelle HTTP dans le cadre du projet PFA.",
-    "features": [
-      {
-        "label": "Environnement Gymnasium et récompense multi-critères",
-        "status": "ok"
-      },
-      {
-        "label": "Ordonnancement MQTT à deux workers et communication avec Ollama",
-        "status": "ok"
-      },
-      {
-        "label": "Chargement PPO avec repli heuristique si modèle absent",
-        "status": "ok"
-      },
-      {
-        "label": "Gateway FastAPI / WebSocket à profils multiples",
-        "status": "ok"
-      },
-      {
-        "label": "Poids entraînés PPO disponibles dans le dépôt",
-        "status": "todo"
-      }
-    ],
-    "results": [
-      "Évaluation comparative sur 1 000 requêtes simulées : latence PPO de 31,13 s contre 43,35 s avec Round-Robin (réduction de 28,2 %).",
-      "Le score de qualité simulé du PPO est de 0,60 dans la comparaison, contre 0,68 pour Round-Robin : le gain de latence s'accompagne d'un compromis sur la qualité.",
-      "Troisième session d'entraînement PPO : récompense moyenne +104,28 ; qualité 0,64 ; latence 31,13 s ; répartition Pi3/Pi5 de 63,6 % / 36,4 %.",
-      "Résultats issus du simulateur et du rapport PFA ; aucune mesure équivalente en production sur les cartes physiques n'est fournie."
-    ],
+    "features": [],
+    "results": [],
     "links": {
-      "github": "https://github.com/Mtkadiri/portfolio/tree/main/public/code/orchestration-llm",
+      "github": "",
       "demo": ""
     },
-    "images": [
-      "./img/architecture-pfa.svg"
-    ],
-    "sources": [
-      {
-        "label": "scheduler_mqtt.py",
-        "path": "code/orchestration-llm/scheduler_mqtt.py",
-        "desc": "Ordonnanceur MQTT et chargement PPO"
-      },
-      {
-        "label": "worker_mqtt.py",
-        "path": "code/orchestration-llm/worker_mqtt.py",
-        "desc": "Workers et requêtes Ollama"
-      },
-      {
-        "label": "rl_environment.py",
-        "path": "code/orchestration-llm/rl_environment.py",
-        "desc": "Environnement d'apprentissage Gymnasium"
-      },
-      {
-        "label": "gateway.py",
-        "path": "code/orchestration-llm/gateway.py",
-        "desc": "API et supervision FastAPI"
-      }
-    ],
-    "benchmark": {
-      "context": "Évaluation sur 1 000 requêtes simulées ; durée moyenne par requête et qualité simulée. Les résultats ne décrivent pas des essais physiques en production.",
-      "rows": [
-        {
-          "algorithm": "Round-Robin",
-          "latency": "43,35 s",
-          "quality": "0,68",
-          "load": "50 % / 50 %"
-        },
-        {
-          "algorithm": "Least-Loaded",
-          "latency": "43,59 s",
-          "quality": "0,68",
-          "load": "50 % / 50 %"
-        },
-        {
-          "algorithm": "Random",
-          "latency": "43,60 s",
-          "quality": "0,69",
-          "load": "48,4 % / 51,6 %"
-        },
-        {
-          "algorithm": "FIFO",
-          "latency": "51,70 s",
-          "quality": "0,79",
-          "load": "33,7 % / 66,3 %"
-        },
-        {
-          "algorithm": "PPO",
-          "latency": "31,13 s",
-          "quality": "0,60",
-          "load": "≈ 67 % / 33 %"
-        }
-      ]
-    },
-    "trainingResults": {
-      "context": "Trois sessions d'entraînement présentées dans le rapport PFA ; scores obtenus en simulation.",
-      "rows": [
-        {
-          "session": "1 — biais Pi3",
-          "reward": "−557,12",
-          "quality": "0,37",
-          "latency": "20,67 s",
-          "distribution": "100 % / 0 %"
-        },
-        {
-          "session": "2 — biais Pi5",
-          "reward": "+572,67",
-          "quality": "0,95",
-          "latency": "63,96 s",
-          "distribution": "9 % / 91 %"
-        },
-        {
-          "session": "3 — compromis final",
-          "reward": "+104,28",
-          "quality": "0,64",
-          "latency": "31,13 s",
-          "distribution": "63,6 % / 36,4 %"
-        }
-      ]
-    }
+    "images": [],
+    "sources": []
   },
   {
     "wiring": [
@@ -379,7 +269,6 @@ export const projects = [
     ]
   }
 ]
-
 
 // level (optionnel) : 1 notions, 2 pratique, 3 solide. Sans level : pas d'indicateur.
 export const skills = [
