@@ -25,30 +25,26 @@ Le routage par `#` fonctionne partout sans configuration.
 - **Vercel / Netlify** : poussez le dossier sur GitHub, importez le dépôt ; build `npm run build`, dossier `dist`.
 - **GitHub Pages** : `npm run build`, puis publiez `dist` (ex. `npx gh-pages -d dist` après `npm i -D gh-pages`) et activez Pages sur la branche `gh-pages`.
 
-## Trois projets techniques documentés (codes sources)
-Les trois fiches du site pointent directement vers des **fichiers réels fournis pour ces projets**, consultables et téléchargeables depuis l'interface.
+## Projets publiés et confidentialité
 
-| Projet | Code publié | Particularités |
-|---|---|---|
-| Contrôle routier IoT | `public/code/controle-routier-iot/` | Émetteur ESP32 + ultrason + OCR/LoRa, récepteur LoRa/MQTT, source du serveur |
-| ESP32 et LoRa RF96 | `public/code/capteurs-lorawan/` | Deux variantes du programme, dont une avec une API de prédiction et FreeRTOS |
-| PFA : orchestration LLM | `public/code/orchestration-llm/` | Environnement RL, scheduler MQTT, worker Ollama et gateway FastAPI |
+Le portfolio présente trois projets, dont le PFA mené au laboratoire CCPS de l'ENSAM Casablanca.
 
-### Code et publication en sécurité
-- Les **mots de passe Wi-Fi, identifiants de réseau et clés de session LoRaWAN** présents dans les sources d'origine ont été neutralisés ou remplacés par des valeurs indicatives dans les fichiers publiés. Ne pas publier les anciennes clés ailleurs ; les renouveler avant de réutiliser un déploiement.
-- Les scripts sont issus des fichiers fournis ; cette publication **n'est pas une validation de leur compilation ou de leur fonctionnement sans configuration**. La partie serveur du contrôle routier a été fournie dans un fichier texte à syntaxe Python incomplète : elle est conservée comme référence, pas comme serveur prêt à exécuter.
-- Pour le PFA, les sources référencent `models/ppo_scheduler_2cards.zip`, **non disponible ici**. L'ordonnanceur prévoit un repli heuristique lorsque ce fichier est absent.
-- Les schémas SVG `public/img/architecture-*.svg` sont des **illustrations de l'architecture déduites des sources**, pas des photographies des montages.
-- Les mesures de performance sont volontairement non renseignées tant qu'elles ne sont pas étayées par des relevés ou résultats reproductibles.
+| Projet | Publication des sources |
+|---|---|
+| Contrôle routier IoT | Codes disponibles dans `public/code/controle-routier-iot/` |
+| ESP32 et LoRa RF96 | Codes disponibles dans `public/code/capteurs-lorawan/` |
+| PFA — Orchestration des LLM avec PPO | **Code réservé au laboratoire CCPS** : pas de fichiers sources, de résultats détaillés ou de liens de téléchargement publics dans le portfolio |
 
-### Voir les fichiers
-Par exemple : `https://github.com/Mtkadiri/portfolio/tree/main/public/code/orchestration-llm`. Les trois fiches du site affichent chaque fichier séparément.
+**Important :** le code du PFA appartient au laboratoire. Le dépôt spécifique `Mtkadiri/PFA-LLM-Orchestration-PPO` doit être **privé** et réservé aux collaborateurs habilités. Les fichiers du PFA qui avaient été publiés dans ce portfolio ont été retirés de sa branche principale. Les anciens commits Git peuvent cependant continuer à contenir des copies ; leur suppression complète requiert une opération distincte de purge d'historique et la vérification des forks ou clones.
 
-## Parcours, certifications et résultats PFA (mise à jour CV du 08/11/2026)
+### Sécurité des autres projets
 
-- **Parcours académique :** ENSAM Casablanca 2024–présent ; DEUG Faculté des Sciences d'Oujda 2021–2024 ; baccalauréat 2020–2021.
-- **Stages :** OCP Group de juillet à août 2025 ; PFA CCPS du 15 juin au 30 septembre 2026.
-- **Certifications :** Cisco Networking Academy — Python Essentials 1 (04/10/2026) ; SNEE UH2C (promotion 2025–2026, délivré le 23/06/2026) ; MATLAB Onramp (mention CV 2026, justificatif non joint).
-- **Comparaison PPO :** tableaux des trois sessions d'entraînement et benchmark sur 1 000 requêtes simulées. Résultats issus du rapport du PFA : PPO 31,13 s contre Round-Robin 43,35 s ; la qualité PPO (0,60) est inférieure à celle de Round-Robin (0,68). Les chiffres ne doivent pas être présentés comme des mesures de production.
-- **Modèle entraîné :** `models/ppo_scheduler_2cards.zip` est cité dans les scripts et rapports, mais le binaire n'est pas disponible dans les fichiers accessibles ; aucun téléchargement factice n'est proposé.
-- **Vie privée :** les PDF d'attestation et de CV ne sont pas automatiquement rendus publics ; leurs informations utiles sont intégrées au site, sans exposer de numéro d'étudiant ou de justificatif original.
+Les identifiants Wi-Fi ou LoRaWAN éventuellement présents dans les codes des autres projets ont été remplacés par des valeurs indicatives lors de leur publication. Vérifier leur validité et leur confidentialité avant tout déploiement.
+
+## Parcours et certifications
+
+- Formation ENSAM Casablanca 2024–présent, DEUG Faculté des Sciences d'Oujda 2021–2024, baccalauréat 2020–2021.
+- Stages : OCP Group de juillet à août 2025 ; PFA CCPS du 15 juin au 30 septembre 2026.
+- Certifications : Cisco Networking Academy — Python Essentials 1 (2026) ; SNEE UH2C (2025–2026) ; MATLAB Onramp, mentionné dans le CV (2026).
+
+Les justificatifs de formation et les attestations nominatives ne sont pas publiés automatiquement.
